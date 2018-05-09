@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="calculator" xmlns:sonar="antlib:org.sonar.ant">
+	<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
+	<property name="sonar.host.url" value="http://localhost:9000" />
+	<property name="sonar.libraries" value="C:\sonarqube-6.5\lib\sonarqube-ant-task-2.5.jar" />
+
+	<!-- Define the SonarQube project properties -->
+	<property name="sonar.projectKey" value="CalcKey" />
+	<property name="sonar.projectName" value="Simple Calculator" />
+	<property name="sonar.projectVersion" value="1.0" />
+	<property name="sonar.sources" value="src" />
+	<property name="sonar.java.binaries" value="build" />
+	<property name="sonar.language" value="java" />
+	<property name="sonar.sourceEncoding" value="UTF-8" />
+	
+	<path id="compile.classpath">
+		<fileset dir="${basedir}\WebContent\WEB-INF\lib">
+			<include name="*.jar" />
+		</fileset>
+		
+	</path>
+	
+	<path id="junit.class.path">
+	    <fileset dir="C:\\eclipse-java\\plugins\\org.junit_4.12.0.v201504281640" includes="*.jar"/>
+	</path>
+	
+	<!-- JUnit classpath. -->
+	<path id="classpath.test">
+		<pathelement location="C:\\eclipse-java\\plugins\\org.junit_4.12.0.v201504281640\\junit.jar"/>
+		<pathelement location="${basedir}\\lib\\hamcrest-core-1.3.jar"/> 
+		<pathelement location="${basedir}\\build\\classes"/>
+	</path>
+	
+
+	<target name="clean">
+		<delete dir="dist" />
+		<delete dir="build" />
+	</target>
+
+	<target name="init">
+		<mkdir dir="build/classes" />
+		<mkdir dir="dist" />
+		<mkdir dir="build/report" />
+	</target>
+
+	<target name="compile">
+		<javac includeantruntime="false" destdir="build/classes" debug="true" srcdir="${basedir}\\src">
+			<classpath refid="junit.class.path" />
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+	
+	
+	<target name="test">
+	    <junit printsummary="on" haltonfailure="yes" fork="true">
+	        <classpath>
+	          <path refid="classpath.test"/>
+	          <pathelement location="${basedir}\\build\\classes"/>
+	        </classpath>
+	        <formatter type="xml" />
+	        <batchtest todir="build/report">
+	            <fileset dir="${basedir}\\src" includes="**/*Test.java" />
+	        </batchtest>
+	    </junit>
+	  </target>
+
+	<!-- Define SonarQube Scanner for Ant Target -->
+	<target name="sonar">
+		<taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+			<!-- Update the following line, or put the "sonarqube-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
+			<classpath path="C:\sonarqube-6.5\lib\sonarqube-ant-task-2.5.jar" />
+		</taskdef>
+
+		<!-- Execute SonarQube Scanner for Ant Analysis -->
+		<sonar:sonar />
+	</target>
+
+	<target name="war" depends="compile">
+		<war destfile="dist/calculator.war" webxml="${basedir}\WebContent\WEB-INF\web.xml">
+			<fileset dir="${basedir}\WebContent" />
+			<lib dir="${basedir}\WebContent\WEB-INF\lib" />
+			<classes dir="${basedir}\build\classes" />
+		</war>
+	</target>
+	
+	<target name="copy" depends="war">
+		<copy todir="C:\\apache-tomcat-7.0.82\\webapps">
+			<fileset dir="${basedir}\\dist" />
+		</copy>
+	</target>
+	
+	
+</project>
