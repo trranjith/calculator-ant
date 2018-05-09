@@ -38,9 +38,9 @@
 	</target>
 
 	<target name="init">
-		<mkdir dir="build/classes" />
-		<mkdir dir="dist" />
-		<mkdir dir="build/report" />
+		<mkdir dir="./build/classes" />
+		<mkdir dir="./dist" />
+		<mkdir dir="./build/report" />
 	</target>
 
 	<target name="compile">
