@@ -45,7 +45,7 @@
 	</target>
 
 	<target name="compile">
-		<javac includeantruntime="false" destdir="build/classes" debug="true" srcdir=".\\src">
+		<javac includeantruntime="true" destdir=".\\build\\classes" debug="true" srcdir=".\\src">
 			<classpath refid="junit.class.path" />
 			<classpath refid="compile.classpath" />
 		</javac>
