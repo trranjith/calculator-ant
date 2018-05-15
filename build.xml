@@ -2,7 +2,7 @@
 <project name="calculator" xmlns:sonar="antlib:org.sonar.ant">
 	<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
 	<property name="sonar.host.url" value="http://localhost:9000" />
-	<property name="sonar.libraries" value="C:\sonarqube-6.5\lib\sonarqube-ant-task-2.5.jar" />
+	<property name="sonar.libraries" value=".\\lib\\sonarqube-ant-task-2.5.jar" />
 
 	<!-- Define the SonarQube project properties -->
 	<property name="sonar.projectKey" value="CalcKey" />
