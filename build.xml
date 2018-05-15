@@ -14,7 +14,7 @@
 	<property name="sonar.sourceEncoding" value="UTF-8" />
 	
 	<path id="compile.classpath">
-		<fileset dir=".\\WebContent\\WEB-INF\\lib">
+		<fileset dir=".\\WebContent\\WEB-INF">
 			<include name="*.jar" />
 		</fileset>
 		
@@ -38,10 +38,11 @@
 	</target>
 
 	<target name="init">
-		<mkdir dir="./build" />
-		<mkdir dir="./build/classes" />
-		<mkdir dir="./dist" />
-		<mkdir dir="./build/report" />
+		<mkdir dir=".\\build" />
+		<mkdir dir=".\\build\\classes" />
+		<mkdir dir=".\\dist" />
+		<mkdir dir=".\\build\\report" />
+		<mkdir dir=".\\WebContent\\WEB-INF\\lib" />
 	</target>
 
 	<target name="compile">
