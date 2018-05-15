@@ -20,9 +20,9 @@
 		
 	</path>
 	
-	<path id="junit.class.path">
+	<!--path id="junit.class.path">
 	    <fileset dir=".\\lib\\org.junit_4.12.0.v201504281640" includes="*.jar"/>
-	</path>
+	</path-->
 	
 	<!-- JUnit classpath. -->
 	<path id="classpath.test">
@@ -47,7 +47,7 @@
 
 	<target name="compile">
 		<javac includeantruntime="true" destdir=".\\build\\classes" debug="true" srcdir=".\\src">
-			<classpath refid="junit.class.path" />
+			<classpath refid="classpath.test" />
 			<classpath refid="compile.classpath" />
 		</javac>
 	</target>
@@ -57,10 +57,10 @@
 	    <junit printsummary="on" haltonfailure="yes" fork="true">
 	        <classpath>
 	          <path refid="classpath.test"/>
-	          <pathelement location="${basedir}\\build\\classes"/>
+	          <pathelement location=".\\build\\classes"/>
 	        </classpath>
 	        <formatter type="xml" />
-	        <batchtest todir="build/report">
+	        <batchtest todir=".\\build\\report">
 	            <fileset dir=".\\src" includes="**/*Test.java" />
 	        </batchtest>
 	    </junit>
