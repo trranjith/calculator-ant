@@ -13,16 +13,13 @@
 	<property name="sonar.language" value="java" />
 	<property name="sonar.sourceEncoding" value="UTF-8" />
 	
+	<!-- Compile classpath. -->
 	<path id="compile.classpath">
 		<fileset dir=".\\WebContent\\WEB-INF">
 			<include name="*.jar" />
 		</fileset>
-		
 	</path>
 	
-	<!--path id="junit.class.path">
-	    <fileset dir=".\\lib\\org.junit_4.12.0.v201504281640" includes="*.jar"/>
-	</path-->
 	
 	<!-- JUnit classpath. -->
 	<path id="classpath.test">
