@@ -2,26 +2,26 @@
 <project name="calculator" xmlns:sonar="antlib:org.sonar.ant">
 	<property  file="tasks.properties" />
 	<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
-	<property name="sonar.host.url" value="http://localhost:9000" />
-	<property name="sonar.libraries" value=".\\lib\\sonarqube-ant-task-2.5.jar" />
+	<!--property name="sonar.host.url" value="http://localhost:9000" />
+	<property name="sonar.libraries" value=".\\lib\\sonarqube-ant-task-2.5.jar" /-->
 
 	<!-- Define the SonarQube project properties -->
-	<property name="sonar.projectKey" value="CalcKey" />
+	<!--property name="sonar.projectKey" value="CalcKey" />
 	<property name="sonar.projectName" value="Simple Calculator" />
 	<property name="sonar.projectVersion" value="1.0" />
 	<property name="sonar.sources" value="src" />
 	<property name="sonar.java.binaries" value="build" />
 	<property name="sonar.language" value="java" />
-	<property name="sonar.sourceEncoding" value="UTF-8" />
+	<property name="sonar.sourceEncoding" value="UTF-8" /-->
 	
 	<!-- cobertura properties -->
-	<property name="cobertura.dir" value="C:\\cobertura-2.1.1" />
+	<!--property name="cobertura.dir" value="C:\\cobertura-2.1.1" />
 	<property name="cob.instrumented.dir" value="${cobertura.dir}/instrumented" />
 	<property name="cob.reports.dir" value="${cobertura.dir}/reports" />
 	<property name="cob.reports.xml.dir" value="${cob.reports.dir}/junit-xml" />
 	<property name="cob.reports.html.dir" value="${cob.reports.dir}/junit-html" />
 	<property name="cob.coverage.xml.dir" value="${cob.reports.dir}/cobertura-xml" />
-	<property name="cob.coverage.html.dir" value="${cob.reports.dir}/cobertura-html" />
+	<property name="cob.coverage.html.dir" value="${cob.reports.dir}/cobertura-html" /-->
 
 	
 	<!-- Compile classpath. -->
